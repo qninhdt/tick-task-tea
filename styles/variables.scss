@@ -1,0 +1,25 @@
+$green : #2ecc71;
+$darker-green: #27ae60;
+$blue : #3498db;
+$darker-blue: #2980b9;
+$red : #e74c3c;
+$darker-red : #c0392b;
+$gray : #7f8c8d;
+$darker-gray : #737d7e;
+$black: #2c3e50;
+$white: #ecf0f1;
+$yellow: #f1c40f;
+$nature: #1abc9c;
+$orange: #e67e22;
+$purple: #9b59b6;
+
+$standard-colors: (
+    "nature" : $nature,
+    "green"  : $green,
+    "blue"   : $blue,
+    "red"    : $red,
+    "yellow" : $yellow,
+    "orange" : $orange,
+    "gray"   : $gray,
+    "purple" : $purple,
+)

@@ -1,0 +1,98 @@
+@import "./variables.scss";
+
+.task-list-item {
+    background-color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    user-select: none;
+    min-height: 60px;
+    display: flex;
+    padding: 5px 10px;
+    position: relative;
+
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+
+    .task-list-item-drag {
+        opacity: 0;
+        align-self: center;
+        
+        button {
+            cursor: move;
+        }
+    }
+
+    &:hover .task-list-item-drag {
+        opacity: 1;
+    }
+
+    .task-list-item-checkbox {
+        padding: 15px 15px 10px 5px;
+    }
+
+    .task-list-item-content {
+        padding: 2px 15px 10px 0px;
+    }
+
+    .task-list-item-project {
+        height: 12px;
+        font-size: 12px;
+    }
+
+    .task-list-item-title {
+        word-spacing: 1px;
+        font-size: 14px;
+        line-height: 22px;
+        word-wrap: break-word;
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        padding-right: 30px;
+        margin-bottom: 5px;
+        font-weight: 500;
+        letter-spacing: .5px;
+    }
+
+    .task-list-item-time {
+        display: flex;
+        align-items: center;
+
+        small {
+            color: rgb(49, 49, 49);
+            margin-left: 3px;
+        }
+    }
+
+    &:hover .task-list-item-controls {
+        opacity: 1;
+    }
+
+    .task-list-item-controls {
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 5px;
+        display: flex;
+
+        button {
+            margin-right: 2px;
+
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+
+    @each $name, $color in $standard-colors {
+        &.task-list-item-#{$name} {
+            .task-list-item-title {
+                color: darken($color, 20);
+            }
+        }
+    }
+}

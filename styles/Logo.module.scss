@@ -1,0 +1,24 @@
+.logo {
+    background-color: #00000025;
+    border-bottom-left-radius: 1000px;
+    border-bottom-right-radius: 1000px;
+    padding: 5px 30px;
+    position: absolute;
+    font-weight: 300;
+    z-index: 999;
+    user-select: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+
+    span {
+        text-align: center;
+        font-size: .9em;
+        color: rgba(255, 255, 255, 0.8);
+        
+        &:not(:last-child) {
+            margin-right: .5em;
+        }
+    }
+}

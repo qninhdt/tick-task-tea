@@ -1,0 +1,42 @@
+@import "./variables.scss";
+
+.icon {
+    -webkit-user-drag: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    svg {   
+        height: 24px;
+        width: 24px;
+    }
+
+    &.icon-big {
+        svg {
+            height: 36px;
+            width: 36px;
+        }
+    }
+
+    &.icon-small {
+        svg {
+            height: 14px;
+            width: 14px;
+        }
+    }
+
+    path {
+        fill: black;
+    }
+
+    @each $name, $color in $standard-colors {
+        &.icon-#{$name} {
+            path:nth-child(1) {
+                fill: $color;
+            }
+            path:nth-child(2) {
+                fill: rgba($color, .9);
+            }
+        }
+    }
+}

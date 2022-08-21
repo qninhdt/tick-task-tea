@@ -1,0 +1,49 @@
+.task-list {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 10px;
+    padding-right: 10px;
+    overflow: hidden;
+}
+
+.task-list-inner {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+.task-list-controls {
+    padding: 0px 10px 5px 10px;
+
+    .task-list-controls-right {
+        float: right;
+    }
+}
+
+.task-list-content {
+    position: relative;
+    padding-right: 5px;
+    overflow-y: scroll;
+    flex: 1;
+    z-index: 1;
+
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: transparent;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}

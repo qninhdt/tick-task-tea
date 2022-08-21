@@ -1,0 +1,121 @@
+@import "variables.scss";
+
+@mixin filled-button($bgcolor, $color) {
+    background-color: $bgcolor;
+    color: $color;
+    
+    &:after {
+        background-color: rgba($bgcolor, .35);
+        transform: translateZ(-1px);
+    }
+
+    &:hover {
+        background-color: darken($bgcolor, 5);
+        &:after {
+            transform: skewY(-5deg) translateZ(-1px);
+        }
+    }
+
+    &:active {
+        transform: translateX(2px) translateY(2px);
+        &:after {
+            top : calc(20% + 2px);
+            left: calc(20% + 2px);
+            // transform: translateZ(-1px);
+        }
+    }
+}
+
+@mixin outline-button($bgcolor, $color) {
+    border: 1px solid $bgcolor;
+    background-color: transparent;
+    color: $color;
+    
+    &:after {
+        background-color: rgba($bgcolor, .15);
+    }
+
+    &:hover {
+        &:after {
+            transform: skewY(-5deg);
+        }
+    }
+
+    &:active {
+        transform: translateX(2px) translateY(2px);
+        &:after {
+            top : calc(20% + 2px);
+            left: calc(20% + 2px);
+        }
+    }
+}
+
+$colors : (
+    "green" : $green,
+    "red"   : $red,
+    "blue"  : $blue
+);
+
+.btn {
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+
+    &:not(:last-child) {
+        margin-right: 1em;
+    }
+
+    padding: .3em .75em;
+    transition: .05s linear;
+
+    &:after {
+        content: "";
+        width: 80%;
+        height: 80%;
+        position: absolute;
+        top: calc(20% + 6px);
+        left: calc(20% + 6px);
+        transition: .1s linear;
+        z-index: -1;
+    }
+    
+    @include filled-button(#bdc3c7, $black);
+
+    @each $name, $color in $colors {
+        &.btn-#{$name} {
+            @include filled-button($color, $white);
+        }
+    }
+
+    &.btn-rounded {
+        border-radius: .75em;
+
+        &:after {
+            border-radius: .75em;
+        }
+    }
+
+    &.btn-outline {
+        font-weight: 600;
+        transition: .1s linear;
+
+        &:after {
+            content: "";
+            border: 0;
+            width: 80%;
+            height: 80%;
+            position: absolute;
+            top: calc(20% + 6px);
+            left: calc(20% + 6px);
+            transition: .1s linear;
+        }
+        
+        @include outline-button(darken(#34495e,15), darken(#34495e,55));
+
+        @each $name, $color in $colors {
+            &.btn-#{$name} {
+                @include outline-button($color, darken($color,55));
+            }
+        }
+    }
+}

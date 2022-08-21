@@ -1,0 +1,11 @@
+.task-manager {
+    padding: 50px 75px 50px 75px;
+    height: 100%;
+}
+
+.task-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: stretch;
+}

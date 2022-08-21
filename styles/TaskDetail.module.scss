@@ -1,0 +1,101 @@
+.task-detail {
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    min-width: 350px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .task-detail-head {
+        background-color: rgba(#fff, 0.4);
+        padding: 10px;
+        padding-bottom: 15px;
+        margin-bottom: 5px;
+        display: flex;
+    }
+
+    .task-detail-checkbox {
+        padding: 19px 5px 10px 5px;
+    }
+
+    .task-detail-title {
+        flex-grow: 1;
+        
+        small {
+            padding-left: 10px;
+        }
+
+        input {
+            font-weight: 500;
+            letter-spacing: .5px;
+        }
+    }
+
+    .task-detail-body {
+        position: relative;
+        background-color: rgba(#fff, 0.7);
+        flex-grow: 1;
+        padding: 20px;
+    }
+
+    .task-detail-description-input {
+        display: flex;
+    }
+
+    .task-detail-description-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 10px 6px 0px;
+
+        [role="line"] {
+            flex-grow: 1;
+            width: 1px;
+            background-color: rgba(0, 0, 0, 0.75);
+            margin-top: 10px;
+        }
+    }
+
+    .task-detail-buttons {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .task-detail-color-picker {
+        display: flex;
+        margin-bottom: 5px;
+        padding: 0px 15px 10px 15px;
+
+        span {
+            flex-grow: 1;
+            height: 14px;
+            display: block;
+            opacity: .6;
+            cursor: pointer; 
+            user-select: none;
+            position: relative;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &[active="true"] {
+                opacity: 1;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: 10px;
+                    height: 7px;
+                    left: 50%;
+                    top: -3px;
+                    border-left: 1px solid white;
+                    border-bottom: 1px solid white;
+                    transform: rotate(-45deg) translateX(-50%);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+@import "./variables.scss";
+
+.checkbox {
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid $darker-gray;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+
+    &.checkbox-rounded {
+        border-radius: 50%;
+
+        &::after {
+            border-radius: 50%;
+
+        }
+    }
+
+    &:after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 25%;
+        left: 25%;
+        background-color: rgba($darker-gray, 0.3);
+        z-index: -1;
+        content: "";
+        transition: .05s linear;
+    }
+
+    &:hover:after {
+        top: 0;
+        left: 0;
+    }
+
+    &:active:after {
+        background-color: rgba($darker-gray, 0.5);
+    }
+
+    @each $name, $color in $standard-colors {
+        &.checkbox-#{$name} {
+            border-color: darken($color, 15);
+
+            &:after {
+                background-color: rgba($color, 0.3);
+            }
+
+            &:active:after {
+                background-color: rgba($color, 0.5);
+            }
+        }
+    }
+
+    & .checkbox-icon {
+        opacity: 0;
+    }
+
+    &.checkbox-checked .checkbox-icon {
+        opacity: 1;
+    }
+}
