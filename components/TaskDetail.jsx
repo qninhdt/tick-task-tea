@@ -5,10 +5,13 @@ import TextArea from "./TextArea"
 
 import AlignLeftSVG from "@/assets/icons/align-left.svg"
 import EditSVG from "@/assets/icons/pen-to-square.svg"
+import CalendarSVG from "@/assets/icons/calendar-clock.svg"
 
 import Icon from "./Icon"
 import Button from "./Button"
 import { withAppStore } from "store"
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 function TaskDetail({
     action,
@@ -28,9 +31,10 @@ function TaskDetail({
         { name: "purple", value: "#9b59b6" },
     ]
 
-    const setTitle = title => onChange({ ...task, title })
+    const setTitle       = title       => onChange({ ...task, title })
     const setDescription = description => onChange({ ...task, description })
-    const setColor = color => onChange({ ...task, color })
+    const setColor       = color       => onChange({ ...task, color })
+    const setTime        = time        => onChange({ ...task, time })
 
     const cancelTask = () => {
         onChange(null)
@@ -76,14 +80,14 @@ function TaskDetail({
 
                 <div className={styles['task-detail-description-input']}>
                     <div className={styles['task-detail-description-icon']}>
-                        <Icon svg={AlignLeftSVG} small/>
+                        <Icon svg={AlignLeftSVG} color="gray" small/>
                         <span role="line"></span>
                     </div>
                     <TextArea 
                         className={styles['task-detail-description']} 
-                        minHeight="20px"
-                        maxHeight="200px"
-                        height="20px" 
+                        minHeight="150px"
+                        maxHeight="150px"
+                        height="150px" 
                         width="240px" 
                         maxWidth="240px"
                         placeholder="Type your description here"
@@ -91,6 +95,21 @@ function TaskDetail({
                         onChange={setDescription}
                     />
                 </div>  
+                
+                <div className={styles["task-detail-datepicker"]}>
+                    
+                    <div className={styles['task-detail-datepicker-icon']}>
+                        <Icon svg={CalendarSVG} color="gray" />
+                    </div>
+
+                    <DatePicker
+                        selected={task.time}
+                        onChange={setTime}
+                        timeInputLabel="Time:"
+                        dateFormat="h:mm aa dd/MM/yyyy"
+                        showTimeInput
+                    />
+                </div> 
                 
                 { action == 'create' && renderButtons() }
             </div>

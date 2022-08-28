@@ -42,7 +42,7 @@ export default function TextArea({
     const onFocus = () => setIsFocused(true)
 
     const onCancel = (e) => {
-        setCurrentValue("", null)
+        onChange("");
     }
 
     const onUnFocus = (e) => {

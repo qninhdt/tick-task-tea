@@ -1,3 +1,4 @@
+import StatisticBox from "@/components/StatisticBox"
 import TaskDetail from "@/components/TaskDetail"
 import TaskList from "@/components/TaskList"
 import TaskMenu from "@/components/TaskMenu"
@@ -8,7 +9,7 @@ import { withAppStore } from "store"
 const DEFAULT_TASK = {
     title: "",
     description: "",
-    time: "20:00",
+    time: new Date(),
     color: "gray",
     project: "",
 }
@@ -58,7 +59,7 @@ function TaskManager({ store }) {
                             setCurrentTask(null)
                         }}
                     /> :
-                    <p>lmao</p>
+                    <StatisticBox />
                 }
                 
             </div>

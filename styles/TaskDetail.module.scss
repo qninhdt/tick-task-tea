@@ -65,6 +65,7 @@
 
     .task-detail-color-picker {
         display: flex;
+        margin-top: 10px;
         margin-bottom: 5px;
         padding: 0px 15px 10px 15px;
 
@@ -96,6 +97,27 @@
                     transform: rotate(-45deg) translateX(-50%);
                 }
             }
+        }
+    }
+
+    .task-detail-datepicker {
+        display: flex;
+        margin-top: 20px;
+        justify-content: center;
+
+        .task-detail-datepicker-icon {
+            padding-right: 10px;
+            padding-top: 5px;
+        }
+
+        input {
+            height: 30px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.556);
+            border: 0;
+            color: gray;
+            cursor: pointer;
+            user-select: none;
         }
     }
 }

@@ -10,50 +10,50 @@ export class AppProvider extends React.Component {
                 id : 1,
                 title: "Learning new programing language",
                 color: "blue",
-                time: "20:00",
                 height: "100px",
                 description: "",
+                time: new Date()
             },
             {
                 id : 2,
                 title: "Learning new programing language",
                 color: "gray",
-                time: "20:00",
                 height: "120px",
                 project: "dizz",
                 description: "",
+                time: new Date()
             },
             {
                 id : 3,
                 title: "Learning new programing language",
                 color: "red",
-                time: "20:00",
                 description: "",
                 height: "50px",
+                time: new Date()
             },
             {
                 id: 4,
                 title: "Learning new programing language",
                 color: "nature",
-                time: "20:00",
                 description: "",
                 height: "200px",
+                time: new Date()
             },
             {
                 id : 5,
                 title: "ddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamds",
                 color: "green",
-                time: "20:00",
                 description: "",
                 height: "50px",
+                time: new Date()
             },
             {
                 id: 6,
                 title: "ddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamds",
                 color: "purple",
-                time: "20:00",
                 description: "",
                 height: "110px",
+                time: new Date()
             },
         ]
     }
@@ -62,7 +62,7 @@ export class AppProvider extends React.Component {
         task.id = this.state.tasks.length + 1
 
         this.setState({
-            tasks: [...this.state.tasks, task]
+            tasks: [task, ...this.state.tasks]
         })
     } 
 

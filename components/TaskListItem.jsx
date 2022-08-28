@@ -9,6 +9,17 @@ import TimerSVG from "@/assets/icons/timer.svg"
 import XmarkSVG from "@/assets/icons/xmark.svg"
 import SkipSVG from "@/assets/icons/arrow-right-long-to-line.svg"
 
+function formatAMPM(date) {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; 
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    let strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+}
+
 export default function TaskListItem({
     project, 
     title,
@@ -45,7 +56,7 @@ export default function TaskListItem({
                 <div className={styles['task-list-item-info']}>
                     <div className={styles['task-list-item-time']}>
                         <Icon svg={TimerSVG} small/>
-                        <small>{time}</small>
+                        <small>{formatAMPM(time)}</small>
                     </div>
                 </div>
             </div>
