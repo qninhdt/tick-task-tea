@@ -5,57 +5,26 @@ const AppContext = React.createContext()
 export class AppProvider extends React.Component {
 
     state = {
-        tasks:  [
-            {
-                id : 1,
-                title: "Learning new programing language",
-                color: "blue",
-                height: "100px",
-                description: "",
-                time: new Date()
-            },
-            {
-                id : 2,
-                title: "Learning new programing language",
-                color: "gray",
-                height: "120px",
-                project: "dizz",
-                description: "",
-                time: new Date()
-            },
-            {
-                id : 3,
-                title: "Learning new programing language",
-                color: "red",
-                description: "",
-                height: "50px",
-                time: new Date()
-            },
-            {
-                id: 4,
-                title: "Learning new programing language",
-                color: "nature",
-                description: "",
-                height: "200px",
-                time: new Date()
-            },
-            {
-                id : 5,
-                title: "ddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamds",
-                color: "green",
-                description: "",
-                height: "50px",
-                time: new Date()
-            },
-            {
-                id: 6,
-                title: "ddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamdsddasamds",
-                color: "purple",
-                description: "",
-                height: "110px",
-                time: new Date()
-            },
-        ]
+        tasks:  []
+    }
+
+    componentDidMount() {
+        let tasks_str = localStorage.getItem("tasks");
+
+        if (tasks_str) {
+            let tasks = JSON.parse(tasks_str)
+
+            tasks = tasks.map(({ time, ...task })=>({time: new Date(time), ...task}))
+
+            this.setState({
+                tasks: tasks
+            })
+        }
+    }
+
+    saveToStorage(tasks) {
+        tasks = tasks.map(({ time, ...task })=>({time:time.getTime(), ...task}))
+        localStorage.setItem("tasks", JSON.stringify(tasks))
     }
 
     addTask = (task) => {
@@ -64,6 +33,8 @@ export class AppProvider extends React.Component {
         this.setState({
             tasks: [task, ...this.state.tasks]
         })
+
+        this.saveToStorage([task, ...this.state.tasks])
     } 
 
     updateTask = (task) => {
@@ -80,6 +51,7 @@ export class AppProvider extends React.Component {
         }
 
         this.setState({ tasks })
+        this.saveToStorage(tasks)
     }
 
     deleteTask = taskId => {
@@ -89,6 +61,7 @@ export class AppProvider extends React.Component {
         tasks.splice(idx, 1)
 
         this.setState({ tasks })
+        this.saveToStorage(this.state.task)
     }
 
     render() {

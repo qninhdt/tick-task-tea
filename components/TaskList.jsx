@@ -25,6 +25,7 @@ function TaskList({
                 <div className={styles['task-list-content']}>
                     {tasks.map(task => (
                         <TaskListItem 
+                            key={task.id}
                             onClick={()=>onChangeTask(task.id)}
                             onDelete={()=>onDeleteTask(task.id) }
                             {...task} 

@@ -71,6 +71,7 @@ function TaskDetail({
                 <div className={styles['task-detail-color-picker']}>
                     {colors.map(({ name, value }) => (
                         <span 
+                            key={name}
                             active={name==task.color ? "true" : "false"} 
                             style={{ backgroundColor: value }}
                             onClick={()=>setColor(name)}>
